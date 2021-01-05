@@ -1,15 +1,15 @@
 import torch
 import numpy as np
 import os
-
-splits = ["train", "test"]
-train_data_path = "./data/matrix_data_SMD-1-2/train_data/"
-test_data_path = "./data/matrix_data_SMD-1-2/test_data/"
-shuffle = {'train': True, 'test': False}
+import torch.utils.data
 
 
-def load_data():
+def load_data(number):
     dataset = {}
+    splits = ["train", "test"]
+    shuffle = {'train': True, 'test': False}
+    train_data_path = './data/matrix_data_SMD-' + number + '/train_data/'
+    test_data_path = './data/matrix_data_SMD-' + number + '/test_data/'
     train_file_list = os.listdir(train_data_path)
     test_file_list = os.listdir(test_data_path)
     train_file_list.sort(key=lambda x: int(x[11:-4]))
